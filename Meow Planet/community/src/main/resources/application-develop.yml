@@ -1,0 +1,79 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /community
+
+spring:
+  datasource:
+    druid:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://localhost:3306/community?serverTimezone=UTC
+      username: root
+      password: root
+  thymeleaf:
+    cache: false
+  mail:
+    host: smtp.qq.com
+    port: 465
+    username: 2645118890@qq.com
+    password: msbvlrkdywgqeche
+    protocol: smtps
+    properties:
+      mail.smtp.auth: true
+      mail.smtp.starttls.enable: true
+      mail.smtp.starttls.required: true
+      mail.smtp.socketFactory.port: 465
+      mail.smtp.socketFactory.class: javax.net.ssl.SSLSocketFactory
+      mail.smtp.socketFactory.fallback: false
+  redis:
+    database: 11
+    host: localhost
+    port: 6379
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer:
+      group-id: community-consumer-group
+      enable-auto-commit: true
+      auto-commit-interval: 3000
+  elasticsearch:
+    uris: http://localhost:9200
+  task:
+    execution:
+      pool:
+        core-size: 8
+        max-size: 15
+        queue-capacity: 100
+    scheduling:
+      pool:
+        size: 5
+
+
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.suo.pojo
+  configuration:
+    use-generated-keys: true
+    map-underscore-to-camel-case: true
+logging:
+  level:
+    com.suo.mapper: debug
+
+community:
+  path:
+    domain: http://localhost:8080
+    upload: F:/work/upload
+
+qiniu:
+  key:
+    access: EA0quyfWRAKKx75bqo_paj9_DNK1ecNIpMRYj39L
+    secret: gnJP4D3FLh9pAqT7qj4MsWf6jLmBwqODLUlSymc9
+  bucket:
+    header:
+      name: communityy
+      url: rawh2tw21.hn-bkt.clouddn.com
+aliyun:
+  endpoint: oss-cn-hangzhou-internal.aliyuncs.com
+  accessKey:
+    Id: LTAI5tNKp4c62WRACHDd1Lfv
+    Secret: oCYL6sPQKJzIS6DOxPy3DckrIWNhaj
